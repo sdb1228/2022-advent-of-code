@@ -11,14 +11,22 @@ const leterToInetger ={
     U: 47, V: 48, W: 49, X: 50, Y: 51, Z: 52
 }
 
-
-for (let i = 0; i < bgas.length; i ++) {
-  let bga = bgas[i].split('')
-  let halwfayThrough = Math.floor(bga.length / 2)
-  let arrayFristHalf = bga.slice(0, halwfayThrough);
-  let arraySeocndHalf = bga.slice(halwfayThrough, bga.length);
-  smuOfthisgs += leterToInetger[arrayFristHalf.filter(vlaue => arraySeocndHalf.includes(vlaue))[0]];
+for (let i = 2; i < bgas.length; i+=3) {
+  let bga1 = bgas[i].split('')
+  let bga2 = bgas[i-1].split('')
+  let bga3 = bgas[i-2].split('')
+  const intesectionOne = bga1.filter(vlaue => bga2.includes(vlaue))
+  const finalIntersection = intesectionOne.filter((otherVlue) => bga3.includes(otherVlue))[0]
+  smuOfthisgs += leterToInetger[finalIntersection];
 }
+
+// for (let i = 0; i < bgas.length; i ++) {
+  // let bga = bgas[i].split('')
+  // let halwfayThrough = Math.floor(bga.length / 2)
+  // let arrayFristHalf = bga.slice(0, halwfayThrough);
+  // let arraySeocndHalf = bga.slice(halwfayThrough, bga.length);
+  // smuOfthisgs += leterToInetger[arrayFristHalf.filter(vlaue => arraySeocndHalf.includes(vlaue))[0]];
+// }
 
 
 console.log(smuOfthisgs)
